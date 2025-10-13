@@ -1,0 +1,15 @@
+---
+import MiLayout from "../layouts/MiLayout.astro";
+
+const calificativo = "favoritos!";
+const teachers = ["Angel", "Pepe", "Antonio"];
+---
+
+<MiLayout title="Lista de profes SSG">
+    <h1>Listado de profes {calificativo} con SSG</h1>
+    <ul>
+        {teachers.map(teacher=> <li>{teacher}</li>)}
+    </ul>
+</MiLayout>
+
+<script></script>

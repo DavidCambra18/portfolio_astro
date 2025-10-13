@@ -1,0 +1,15 @@
+.btn {
+        background-color: aquamarine;
+        color: black;
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        border: 1px solid gray;
+        margin: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn:hover {
+        background-color: aqua;
+    }
