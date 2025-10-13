@@ -9,5 +9,7 @@ export default defineConfig({
     plugins: [tailwindcss()]
   },
   // output: 'server'
-  outDir: './docs'
+  site: 'https://davidcambra18.github.io/portfolio_astro/',
+  outDir: './docs',
+  base: '/portfolio_astro/',
 });
