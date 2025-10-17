@@ -8,8 +8,5 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
-  // output: 'server'
-  site: 'https://davidcambra18.github.io/portfolio_astro/',
-  outDir: './docs',
-  base: '/portfolio_astro/',
+  output: 'server' // Esto convierte astro en SSR
 });
