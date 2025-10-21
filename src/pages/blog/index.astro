@@ -1,0 +1,20 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import MiLayout from "../../layouts/MiLayout.astro";
+
+
+// Debería estar en una función asíncrona, pero astro ya la interpreta como tal por defecto
+const posts: CollectionEntry<"posts">[] = await getCollection('posts');
+---
+
+<MiLayout title="Mi blog de tecnología">
+    <h1>Mi blog</h1>
+    <ul>
+        {
+            posts.map((post) => 
+            <li>
+                <a href={`/blog/${post?.slug}`}>{post.data.title}</a>
+            </li>)
+        }
+    </ul>
+</MiLayout>
