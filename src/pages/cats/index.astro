@@ -1,0 +1,41 @@
+---
+import MiLayout from "../../layouts/MiLayout.astro";
+
+/* Crear una web con astro que permita:
+- Mostrar un gato en particular por su id
+- Ver un listado de gatos
+
+uso el api = https://thecatapi.com/
+
+guarda la api_key en el fichero .env
+- CSR SRR SSG */
+
+interface Cat {
+  id: string;
+  url: string;
+}
+
+const res = await fetch('https://api.thecatapi.com/v1/images/search?limit=5', {
+  headers: {
+    'x-api-key': process.env.cat_api!
+  }
+});
+
+const cats: Cat[] = await res.json();
+---
+
+<MiLayout>
+    <h1>Lista de gatos</h1>
+
+    <ul>
+        {
+            cats.map((cat) => (
+                <li>
+                    <a href={`/cats/${cat.id}`}>
+                        <img src={cat.url} alt="Gato" width="200" />
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</MiLayout>
