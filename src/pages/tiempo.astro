@@ -1,6 +1,34 @@
 ---
-// esta web nos da el tiempo en una ciudad determinada  wttr.in/XXXX?format=j1  
+import MiLayout from "../layouts/MiLayout.astro";
+// esta web nos da el tiempo en una ciudad determinada  wttr.in/XXXX?format=j1
 // muestra el tiempo actual
 // el usuario podrá escribir en una caja de texto la ciudad que quiere consultar
 // CSR SSR SSG
 ---
+
+
+<MiLayout>
+    <form id="form">
+        <label>Ciudad</label>
+        <input name="city" placeholder="Introduce la ciudad">
+        <button>Obtener tiempo</button>
+    </form>
+    <div id="info">...</div>
+</MiLayout>
+
+<script>
+    // vanilla
+    const $form = document.getElementById('form')
+    $form?.addEventListener('submit', async (e:SubmitEvent)=>{
+        e.preventDefault()
+        const target = e.target as HTMLFormElement;
+        const city = target.city.value
+        const response = await fetch(`https://wttr.in/${city}?format=j1`)
+        const data = await response.json()
+        
+        document.getElementById("info")!.innerHTML=`
+        <div>${data.current_condition[0].temp_C}</div>
+        <div>${data.current_condition[0].lang_es[0].value}</div>
+        `
+    })
+</script>
